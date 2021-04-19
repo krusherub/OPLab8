@@ -1,12 +1,15 @@
-package com.mycompany.lab8;
+package OPLab8;
 
-public class Human {
+import java.util.Comparator;
+
+class Human {
 
     String name;
     int age;
     String occupation;
     String hobby;
-    Integer count =0;
+    Integer count = 0;
+
     public Human(String name, int age, String occupation) {
         this.name = name;
         this.age = age;
@@ -23,22 +26,38 @@ public class Human {
         this.hobby = hobby;
         count++;
     }
+
     public void setHobby() {
         this.hobby = "some fascinating ACTIVITY";
     }
 
     public String getHobby() {
-        if(count.equals(0) ) setHobby();
+        if (count.equals(0)) setHobby();
         return hobby;
     }
 
+
     @Override
     public String toString() {
-        if (!(occupation.equals("somewhere"))) {
-            return "Human " + name + ", who is " + age + ", works at/in " + occupation;
-        } else {
-            return "Human " + name + ", who is " + age + ", works " + occupation;
+        return name;
+    }
+
+    static class NameComparator implements Comparator<Human> {
+        @Override
+        public int compare(Human o1, Human o2) {
+            return o1.name.toLowerCase().compareTo(o2.name.toLowerCase());
         }
+
+    }
+
+    public static Comparator getComparator() {
+        Comparator comparator = new Comparator<Human>() {
+            @Override
+            public int compare(Human o1, Human o2) {
+                return o1.age - o2.age;
+            }
+        };
+        return comparator;
     }
 
 }

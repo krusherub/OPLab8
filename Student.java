@@ -1,7 +1,8 @@
-package com.mycompany.lab8;
+package OPLab8;
+
+import java.util.Comparator;
 
 public class Student extends Human {
-
     public Student(String name, int age, String university) {
         super(name, age, university);
 
@@ -15,11 +16,8 @@ public class Student extends Human {
 
     @Override
     public String toString() {
-        if (!(occupation.equals("somewhere"))) {
-            return "Student " + name + ", who is " + age + ", studies at " + occupation + " university";
-        } else {
-            return "Student " + name + ", who is " + age + ", studies (or not)" + occupation;
-        }
+        return name;
     }
+
 
 }

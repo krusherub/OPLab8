@@ -3,10 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MainPack;
+package OPLab8;
+import java.util.Comparator;
 
-import com.mycompany.lab8.Human;
-import com.mycompany.lab8.Student;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.TreeSet;
 
 /**
  *
@@ -14,19 +18,26 @@ import com.mycompany.lab8.Student;
  */
 public class MainClass {
     public static void main(String[] args) {
-        Student ivan = new Student("Ivan", 19, "KPI");
-        System.out.println(ivan);
-        
-        System.out.println("His hobby is " +ivan.getHobby());
-        
-        Human petro = new Human("Petro", 34, "EPAM");
-        petro.setHobby("chess");
-        System.out.println(petro);
-        System.out.println("His hobby is " +petro.getHobby()); 
-        
-        Student pedro = new Student();
-        System.out.println(pedro);
-        pedro.setHobby("swimming");
-        System.out.println("His hobby is " +pedro.getHobby());
+        Human sasha = new Human("Sasha",18,"KPI");
+        Human vitaliy = new Human("VITALIY",23,"KPI");
+        Human ivan = new Human("Ivan",20,"KPI");
+
+        TreeSet<Human> list1 = new TreeSet<>(Human.getComparator());
+
+        list1.add(ivan);
+        list1.add(sasha);
+        list1.add(vitaliy);
+        System.out.println(list1);
+        //k
+
+        ArrayList<Human> list2 = new ArrayList<>();
+        list2.add(sasha);
+        list2.add(ivan);
+        list2.add(vitaliy);
+
+        Collections.sort(list2, new Human.NameComparator());
+
+
+        System.out.println(list2);
     }
 }
